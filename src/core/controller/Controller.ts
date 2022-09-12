@@ -1,11 +1,16 @@
+import { ICreateEntityUseCase } from 'domain/useCase/ICreateEntityUseCase';
+import { IDeleteEntityUseCase } from 'domain/useCase/IDeleteEntityUseCase';
+import { IGetEntityUseCase } from 'domain/useCase/IGetEntityUseCase';
+import { IListEntityUseCase } from 'domain/useCase/IListEntityUseCase';
+import { IUpdateEntityUseCase } from 'domain/useCase/IUpdateEntityUseCase';
 import IController from '../../domain/controller/IController';
 
 export default abstract class Controller<T> implements IController<T> {
-  createEntityUseCase!: any;
-  listEntityUseCase!: any;
-  updateEntityUseCase!: any;
-  getEntityUseCase!: any;
-  deleteEntityUseCase!: any;
+  createEntityUseCase!: ICreateEntityUseCase<T>;
+  listEntityUseCase!: IListEntityUseCase<T>;
+  updateEntityUseCase!: IUpdateEntityUseCase<T>;
+  getEntityUseCase!: IGetEntityUseCase<T>;
+  deleteEntityUseCase!: IDeleteEntityUseCase<T>;
   constructor() {}
 
   async create(data: T): Promise<T> {
