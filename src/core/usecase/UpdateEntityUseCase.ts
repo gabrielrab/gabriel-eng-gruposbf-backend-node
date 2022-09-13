@@ -7,9 +7,9 @@ export default abstract class UpdateEntityUseCase<T>
   repository!: IRepository<T>;
   constructor() {}
 
-  async execute(id: string, data: T): Promise<T> {
+  async execute(id: string, data: object): Promise<T> {
     try {
-      const transformedData = await this.repository.update(id, data);
+      const transformedData = await this.repository.update(id, data as T);
       return transformedData;
     } catch (error) {
       throw error;
