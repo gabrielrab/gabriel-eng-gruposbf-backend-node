@@ -1,5 +1,6 @@
 import { Request } from 'express';
 import ProductController from '../controller/ProductController';
+import CurrencyController from '../controller/CurrencyController';
 import Http from './Http';
 
 export default class Router {
@@ -41,6 +42,39 @@ export default class Router {
       const controller = new ProductController();
       const products = await controller.delete(request.params.id);
       return products;
+    });
+
+    // currencies
+    this.http.route('get', '/currencies', async () => {
+      const controller = new CurrencyController();
+      const currency = await controller.list();
+      return currency;
+    });
+
+    this.http.route('get', '/currency/:id', async (request: Request) => {
+      const controller = new CurrencyController();
+      const currency = await controller.getById(request.params.id);
+      return currency;
+    });
+
+    this.http.route('post', '/currency', async (request: Request) => {
+      const controller = new CurrencyController();
+      const currency = await controller.create({ ...request.body });
+      return currency;
+    });
+
+    this.http.route('put', '/currency/:id', async (request: Request) => {
+      const controller = new CurrencyController();
+      const currency = await controller.update(request.params.id, {
+        ...request.body
+      });
+      return currency;
+    });
+
+    this.http.route('delete', '/currency/:id', async (request: Request) => {
+      const controller = new CurrencyController();
+      const currency = await controller.delete(request.params.id);
+      return currency;
     });
   }
 }
