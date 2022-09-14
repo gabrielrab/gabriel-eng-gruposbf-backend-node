@@ -24,7 +24,7 @@ export default class ListProductUseCase extends ListEntityUseCase<Product> {
       if (currencies && currencies.length > 0) {
         return products.map((product) => ({
           ...product,
-          price: Number(product.price) * Number(currencies[0].value || 1)
+          price: Number(product.price) / Number(currencies[0].value || 1)
         }));
       }
       throw new NotFoundException(`Currency '${params.currency}' not found`);
