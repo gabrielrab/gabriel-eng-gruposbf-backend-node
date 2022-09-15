@@ -12,9 +12,9 @@ export default class Router {
     });
 
     // products
-    this.http.route('get', '/products', async () => {
+    this.http.route('get', '/products', async (request: Request) => {
       const controller = new ProductController();
-      const products = await controller.list();
+      const products = await controller.list(request.query);
       return products;
     });
 

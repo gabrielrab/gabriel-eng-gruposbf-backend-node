@@ -13,4 +13,16 @@ export default class CurrencyRepository
     this.entity = CurrencyEntity;
     this.tableName = 'currencies';
   }
+
+  async getBy(key: keyof Currency, value: any): Promise<Currency[]> {
+    try {
+      const records = await this.connection(this.tableName)
+        .select()
+        .from(this.tableName)
+        .where({ [key]: value });
+      return records;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
