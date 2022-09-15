@@ -1,4 +1,4 @@
-import Product, { ProductEntity } from '../../src/domain/entity/product';
+import Product, { ProductEntity } from '../../../src/domain/entity/product';
 
 describe('Unit: Product', () => {
   test('Should be create a valid product', () => {

@@ -1,4 +1,4 @@
-import Currency, { CurrencyEntity } from '../../src/domain/entity/currency';
+import Currency, { CurrencyEntity } from '../../../src/domain/entity/currency';
 
 describe('Unit: Currency', () => {
   test('Should be create a valid currency', () => {
