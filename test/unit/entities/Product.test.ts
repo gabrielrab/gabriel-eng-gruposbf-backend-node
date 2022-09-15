@@ -14,6 +14,7 @@ describe('Unit: Product', () => {
     expect(product.id).toBe(mock.id);
     expect(product.name).toBe(mock.name);
     expect(product.price).toBe(mock.price);
+    expect(!!product.updated_at).toBe(true);
   });
 
   test('Should be validate a invalid product', () => {
